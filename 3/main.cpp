@@ -7,10 +7,13 @@ int count(int n, int k=3) {
     if (k > n) k = n;
     int num=0;
     for (int i=1; i <= k; i++){
-        num+=count((n-i));
+        if (k>2) {
+            num=count((n-i));
+            for (int j=1; j <= k; j++) num+=count((n-j));
+        }
+        else num+=count((n-i));
     }
     return num;
-
 }
 int main() {
     int n, k;
